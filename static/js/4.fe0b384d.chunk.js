@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-08-phonebook"]=this["webpackJsonpgoit-react-hw-08-phonebook"]||[]).push([[4],{84:function(e,t,n){e.exports={image:"Home_image__2Bv4L"}},88:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return s}));var o=n(84),a=n.n(o),c=n(1);var s=function(){return Object(c.jsx)(c.Fragment,{children:Object(c.jsx)("img",{className:a.a.image,src:"https://thumbs.dreamstime.com/b/wellcome-22218814.jpg",alt:"pnone"})})}}}]);
+//# sourceMappingURL=4.fe0b384d.chunk.js.map
