@@ -1,0 +1,47 @@
+.title {
+    text-align: center;
+    margin: 100px 0 50px;
+}
+.form {
+    display: block;
+}
+.formItem {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    padding: 10px;
+    border-radius: 18px;
+    border-color: transparent;
+    margin-right: 0;
+}
+.labelItem :first-child {
+    margin-bottom: 8px;
+}
+.box {
+    flex: 50%;
+    padding: 10px;
+}
+.registerBox {
+    display: flex;
+}
+.btn {
+    width: 100%;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(115, 202, 88);
+    padding: 10px;
+    border-radius: 18px;
+    border-color: transparent;
+    margin: 25px 0 50px;
+}
+.avatar {
+    width: 250px;
+    border-radius: 8px;
+}
+.boxAvatar {
+    flex: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

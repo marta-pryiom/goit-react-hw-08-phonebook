@@ -1,0 +1,20 @@
+.list {
+    list-style: none;
+    display: inline-flex;
+}
+.list :first-child {
+    margin-right: 50px;
+}
+.activeItem {
+    text-decoration: none;
+    color: antiquewhite;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.notActiveItem {
+    text-decoration: none;
+    color: rgba(250, 235, 215, 0.527);
+    font-size: 30px;
+    font-weight: 700;
+}
