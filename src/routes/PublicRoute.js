@@ -1,9 +1,9 @@
-import { Navigate } from 'react-router';
+import { Navigate } from 'react-router-dom';
 function PublicFn({ isAuth, component: Component }) {
     return (
         <>
             {isAuth ? (
-                <Navigate to="/contacts" /> || <Component />
+                <Navigate to="/contacts" /> && <Component />
             ) : (
                 <Component />
             )}

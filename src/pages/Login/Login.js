@@ -56,36 +56,43 @@ function Login() {
                 <div className={s.box}>
                     <h1 className={s.title}>Member Login</h1>
                     <form onSubmit={handleSubmit}>
-                        <label className={s.labelItemEmail}>
-                            <svg className={s.iconEnvelope}>
-                                <use
-                                    href={pathToSprite + '#icon-envelope'}
-                                ></use>
-                            </svg>
-                            <input
-                                type="email"
-                                name="email"
-                                value={email}
-                                placeholder="Email"
-                                className={s.formItem}
-                                autoComplete="true"
-                                onChange={handleChange}
-                            />
+                        <label>
+                            <div className={s.labelItemEmail}>
+                                <svg className={s.iconEnvelope}>
+                                    <use
+                                        href={pathToSprite + '#icon-envelope'}
+                                    ></use>
+                                </svg>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={email}
+                                    placeholder="Email"
+                                    className={s.formItem}
+                                    // autocomplete="on"
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </label>
 
-                        <label className={s.labelPassword}>
-                            <svg className={s.iconLock}>
-                                <use href={pathToSprite + '#icon-locked'}></use>
-                            </svg>
-                            <input
-                                type="password"
-                                name="password"
-                                value={password}
-                                placeholder="Password"
-                                className={s.formItem}
-                                autoComplete="true"
-                                onChange={handleChange}
-                            />
+                        <label>
+                            <div className={s.labelPassword}>
+                                <svg className={s.iconLock}>
+                                    <use
+                                        href={pathToSprite + '#icon-locked'}
+                                    ></use>
+                                </svg>
+
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={password}
+                                    placeholder="Password"
+                                    className={s.formItem}
+                                    // autocomplete="on"
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </label>
                         <button type="submit" className={s.btn}>
                             LOGIN

@@ -9,7 +9,7 @@
     box-sizing: border-box;
     width: 100%;
     background-color: rgb(233, 233, 233);
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
     border-radius: 18px;
     border-color: transparent;
     margin-right: 0;
@@ -33,6 +33,14 @@
     border-radius: 18px;
     border-color: transparent;
     margin: 25px 0 50px;
+    /* transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    background-color: #d19ae2;
+    color: #fff;
+    /* transform: scale(1.01); */
 }
 .avatar {
     width: 250px;
@@ -44,4 +52,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.nameBox {
+    position: relative;
+}
+.nameBox:hover > .icon {
+    fill: rgb(124, 124, 124);
+}
+.icon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    fill: rgb(80, 79, 79);
+    left: 5%;
+    top: 30%;
 }

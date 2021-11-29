@@ -16,6 +16,7 @@ const Register = lazy(() => import('../../pages/Register'));
 
 function App() {
     const isAuth = useSelector(getIsLoggedIn);
+    console.log(isAuth);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(currentUser());
