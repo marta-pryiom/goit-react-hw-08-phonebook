@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 const userLogin = '/users/login';
@@ -17,34 +17,51 @@ const token = {
 
 export const register = createAsyncThunk(
     'auth/register',
-    async (credentials, { rejectWidthValue }) => {
+    async (credentials, { rejectWithValue }) => {
         try {
             const { data } = await axios.post(userRegister, credentials);
-            // toast.success('Welcome! You are registered');
+            console.log(data);
             token.set(data.token);
 
             return data;
         } catch (err) {
-            rejectWidthValue(err.message);
+            toast.error(' You are already registered');
+            // console.log(err.data, err.name, err.body, err.response);
+            // console.log(...err);
+            rejectWithValue(err.message);
         }
     },
 );
 export const logIn = createAsyncThunk(
     'auth/ligin',
-    async (credentials, { rejectWidthValue }) => {
+    async (credentials, { rejectWithValue }) => {
         try {
             const { data } = await axios.post(userLogin, credentials);
             // toast.success('Welcome!');
             token.set(data.token);
             return data;
         } catch (err) {
-            rejectWidthValue(err.message);
+            toast.success('No such user');
+            rejectWithValue(err.message);
         }
     },
 );
+// export const logIn = createAsyncThunk(
+//     'auth/ligin',
+//     async (credentials, { rejectWidthValue }) => {
+//         try {
+//             const { data } = await axios.post(userLogin, credentials);
+//             // toast.success('Welcome!');
+//             token.set(data.token);
+//             return data;
+//         } catch (err) {
+//             rejectWidthValue(err.message);
+//         }
+//     },
+// );
 export const logOut = createAsyncThunk(
     'auth/logout',
-    async (_, { rejectWidthValue, getState }) => {
+    async (_, { rejectWithValue, getState }) => {
         const state = getState();
         console.log(state);
         token.set(state.auth.token);
@@ -52,13 +69,13 @@ export const logOut = createAsyncThunk(
             await axios.post(userLogOut);
             token.unset();
         } catch (err) {
-            rejectWidthValue(err.message);
+            rejectWithValue(err.message);
         }
     },
 );
 export const currentUser = createAsyncThunk(
     'auth/currentUser',
-    async (_, { rejectWidthValue, getState }) => {
+    async (_, { rejectWithValue, getState }) => {
         const state = getState();
         if (state.auth.token === null) {
             return;
@@ -70,7 +87,7 @@ export const currentUser = createAsyncThunk(
             const { data } = await axios.get(userCurrent);
             return data;
         } catch (err) {
-            rejectWidthValue(err.message);
+            rejectWithValue(err.message);
         }
     },
 );

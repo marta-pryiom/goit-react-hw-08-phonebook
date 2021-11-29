@@ -3,6 +3,7 @@ import { submit } from '../../redux/contacts/operations';
 
 import s from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 function ContactForm() {
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function ContactForm() {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(submit({ name, number }));
+        toast.success('все добре');
         reset();
     };
 

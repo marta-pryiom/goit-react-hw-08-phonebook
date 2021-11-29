@@ -4,6 +4,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { currentUser } from '../../redux/auth/auth-operations';
 import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Container from '../Container';
 import PrivatFn from '../../routes/PrivatRoute';
 import PublicFn from '../../routes/PublicRoute';

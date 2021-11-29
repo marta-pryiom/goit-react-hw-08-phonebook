@@ -12,12 +12,10 @@ import {
     REGISTER,
 } from 'redux-persist';
 import authSlice from './auth/auth-slice';
-// import logger from 'redux-logger';
 import storage from 'redux-persist/lib/storage';
 
 const authPersistConfig = {
     key: 'auth',
-    // version: 1,
     storage,
     whitelist: ['token'],
 };
