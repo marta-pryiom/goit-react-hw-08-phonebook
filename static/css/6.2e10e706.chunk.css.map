@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/pages/Home/Home.module.css"],"names":[],"mappings":"AAAA,mBACI,UACJ,CACA,mBACI,gBACJ,CACA,iBACI,aACJ","file":"6.2e10e706.chunk.css","sourcesContent":[".image {\r\n    width: 100%;\r\n}\r\n.title {\r\n    margin-left: 80px;\r\n}\r\n.box {\r\n    display: block;\r\n}\r\n"]}
