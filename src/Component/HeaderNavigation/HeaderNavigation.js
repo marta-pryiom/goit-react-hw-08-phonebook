@@ -7,6 +7,7 @@ import s from './HeaderNavigation.module.css';
 
 function HeaderNavigation() {
     const isAuth = useSelector(getIsLoggedIn);
+    console.log(isAuth);
     return (
         <header className={s.header}>
             <InfoNav />

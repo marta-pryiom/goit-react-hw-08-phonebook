@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../redux/auth/auth-operations';
 import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
@@ -25,6 +26,9 @@ function Login() {
     };
     const handleSubmit = e => {
         e.preventDefault();
+        if (isAuth) {
+            return;
+        }
         dispatch(logIn({ email, password }));
         reset();
     };
@@ -32,89 +36,87 @@ function Login() {
         setEmail('');
         setPassword('');
     };
-    return (
-        !isAuth && (
-            <div className={s.loginBox}>
-                <div className={s.boxAvatar}>
-                    <img alt="avatar" src={avatar} className={s.avatarIcon} />
-                    <svg className={s.triangle}>
-                        <use href={pathToSprite + '#triangle'}></use>
-                    </svg>
-                    <svg className={s.triangleTwo}>
-                        <use href={pathToSprite + '#play'}></use>
-                    </svg>
-                    <svg className={s.circle}>
-                        <use href={pathToSprite + '#circle'}></use>
-                    </svg>
-                    <svg className={s.circleTwo}>
-                        <use href={pathToSprite + '#circle'}></use>
-                    </svg>
-                    <svg className={s.square}>
-                        <use href={pathToSprite + '#square'}></use>
-                    </svg>
-                </div>
-                <div className={s.box}>
-                    <h1 className={s.title}>Member Login</h1>
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            <div className={s.labelItemEmail}>
-                                <svg className={s.iconEnvelope}>
-                                    <use
-                                        href={pathToSprite + '#icon-envelope'}
-                                    ></use>
-                                </svg>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    placeholder="Email"
-                                    className={s.formItem}
-                                    // autocomplete="on"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </label>
-
-                        <label>
-                            <div className={s.labelPassword}>
-                                <svg className={s.iconLock}>
-                                    <use
-                                        href={pathToSprite + '#icon-locked'}
-                                    ></use>
-                                </svg>
-
-                                <input
-                                    type="password"
-                                    name="password"
-                                    value={password}
-                                    placeholder="Password"
-                                    className={s.formItem}
-                                    // autocomplete="on"
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </label>
-                        <button type="submit" className={s.btn}>
-                            LOGIN
-                        </button>
-                    </form>
-                    <div className={s.addBox}>
-                        <p className={s.forgotInfo}>
-                            Forgot{' '}
-                            <span className={s.forgotAddInfo}>
-                                Username/Password?
-                            </span>
-                        </p>
-                        <button type="button" className={s.addBtn}>
-                            Create your Account
-                            <svg className={s.Icon}>
-                                <use href={pathToSprite + '#arrow-right'}></use>
+    return !isAuth ? (
+        <div className={s.loginBox}>
+            <div className={s.boxAvatar}>
+                <img alt="avatar" src={avatar} className={s.avatarIcon} />
+                <svg className={s.triangle}>
+                    <use href={pathToSprite + '#triangle'}></use>
+                </svg>
+                <svg className={s.triangleTwo}>
+                    <use href={pathToSprite + '#play'}></use>
+                </svg>
+                <svg className={s.circle}>
+                    <use href={pathToSprite + '#circle'}></use>
+                </svg>
+                <svg className={s.circleTwo}>
+                    <use href={pathToSprite + '#circle'}></use>
+                </svg>
+                <svg className={s.square}>
+                    <use href={pathToSprite + '#square'}></use>
+                </svg>
+            </div>
+            <div className={s.box}>
+                <h1 className={s.title}>Member Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        <div className={s.labelItemEmail}>
+                            <svg className={s.iconEnvelope}>
+                                <use
+                                    href={pathToSprite + '#icon-envelope'}
+                                ></use>
                             </svg>
-                        </button>
-                    </div>
+                            <input
+                                type="email"
+                                name="email"
+                                value={email}
+                                placeholder="Email"
+                                className={s.formItem}
+                                // autocomplete="on"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </label>
+
+                    <label>
+                        <div className={s.labelPassword}>
+                            <svg className={s.iconLock}>
+                                <use href={pathToSprite + '#icon-locked'}></use>
+                            </svg>
+
+                            <input
+                                type="password"
+                                name="password"
+                                value={password}
+                                placeholder="Password"
+                                className={s.formItem}
+                                // autocomplete="on"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </label>
+                    <button type="submit" className={s.btn}>
+                        LOGIN
+                    </button>
+                </form>
+                <div className={s.addBox}>
+                    <p className={s.forgotInfo}>
+                        Forgot{' '}
+                        <span className={s.forgotAddInfo}>
+                            Username/Password?
+                        </span>
+                    </p>
+                    <button type="button" className={s.addBtn}>
+                        Create your Account
+                        <svg className={s.Icon}>
+                            <use href={pathToSprite + '#arrow-right'}></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        )
+        </div>
+    ) : (
+        <Navigate to="/" />
     );
 }
 export default Login;
