@@ -77,7 +77,7 @@ export const currentUser = createAsyncThunk(
     'auth/currentUser',
     async (_, { rejectWithValue, getState }) => {
         const state = getState();
-        if (state.auth.token === null) {
+        if (state.auth.token === '') {
             return;
         }
         console.log(state);
@@ -85,8 +85,10 @@ export const currentUser = createAsyncThunk(
         console.log(state);
         try {
             const { data } = await axios.get(userCurrent);
+            console.log(data);
             return data;
         } catch (err) {
+            console.log(err);
             rejectWithValue(err.message);
         }
     },

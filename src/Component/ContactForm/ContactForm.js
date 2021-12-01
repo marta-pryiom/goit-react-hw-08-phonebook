@@ -2,16 +2,24 @@ import { useState } from 'react';
 import { submit } from '../../redux/contacts/operations';
 
 import s from './ContactForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import {getContacts} from '../../redux/contacts/selectors'
 
 function ContactForm() {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    const contacts = useSelector(getContacts);
 
     const handleSubmit = e => {
         e.preventDefault();
+        const searchSameName = contacts.some(
+            el => el.name.toLowerCase() === name.toLowerCase(),
+        );
+        if (searchSameName) {
+            return alert(`${name} is already in contacts`);
+        }
         dispatch(submit({ name, number }));
         toast.success('все добре');
         reset();

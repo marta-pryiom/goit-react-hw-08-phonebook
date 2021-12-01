@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { currentUser } from '../../redux/auth/auth-operations';
-import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
+import { getIsLoggedIn ,getUserToken} from '../../redux/auth/auth-selectors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Container from '../Container';
@@ -17,10 +17,17 @@ const Register = lazy(() => import('../../pages/Register'));
 
 function App() {
     const isAuth = useSelector(getIsLoggedIn);
+    const userToken = useSelector(getUserToken)
     console.log(isAuth);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(currentUser());
+        if(userToken.length === 0){
+            return
+        }else{
+ dispatch(currentUser());
+        }
+    
+       
     }, [dispatch]);
 
     return (
